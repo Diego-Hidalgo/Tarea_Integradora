@@ -6,6 +6,12 @@ public class Budget{
 	private static final String[] LOCATIONS = {"norte","centro","sur"};
 	private static final String[] UTILIZATIONS = {"obra negra","obra blanca","pintura"};
 	
+	/**
+	*	Request the inputs needed to solve the problem. <br>
+	*	<b>pre: sc is initialized</b>
+	*	<b>post: </b>
+	*	@param sc Scanner.
+	*/
 	public static void requestData (Scanner sc){
 		int quantityMaterials; //quantity of materials to enter
 		String aux; // it is used an auxiliar
@@ -34,7 +40,7 @@ public class Budget{
 		
 		System.out.println("Ingrese la ubicacion del inmueble: ");
 		aux = sc.nextLine().toLowerCase();
-		while (!Operations.searchEntry(aux, LOCATIONS, 3)){
+		while (!Operations.searchInput(aux, LOCATIONS, 3)){
 			System.out.println("LA UBICACION DEBE SER NORTE, CENTRO O SUR");
 			System.out.println("Ingrese la ubicacion del inmueble: ");
 			aux = sc.nextLine().toLowerCase();
@@ -58,7 +64,7 @@ public class Budget{
 			
 			System.out.print("Utilizacion del material #"+(i+1)+" :");
 			aux = sc.nextLine().toLowerCase();
-			while (!Operations.searchEntry(aux, UTILIZATIONS, 3)){
+			while (!Operations.searchInput(aux, UTILIZATIONS, 3)){
 				System.out.println("NO ES UNA UTILIZACION VALIDA");
 				System.out.println("Los usos validos son: obra negra, obra blanca y pintura: ");
 				aux = sc.nextLine().toLowerCase();
@@ -107,8 +113,23 @@ public class Budget{
 		totalCost += workForce + transportation;
 		
 		showData(sc, totalHC, totalCentro, totalBarrio, quantityMaterials, materials, minPrices, minStores, totalCost, typeUtilization);
-	}
+	}  
 	
+	/**
+	*	Shows the data. <br>
+	*	<b>pre: parameters are initialized</b>
+	*	<b>post: </b>
+	*	@param sc Scanner.
+	*	@param totalHC Total purchase value HomeCenter
+	*	@param totalCentro Total purchase value Ferreteria del Centro.
+	*	@param totalBarrio Total purchase value Ferreteria del Barrio.
+	*	@param quantityMaterials quantity of input materials. quantityMaterials>0 and quantityMaterials!=null.
+	*	@param materials Name of the products to buy. materials!="" and materials!=null.
+	*	@param minPrices lowest prices for each material.
+	*	@param minStores Stores with the lowest prices.
+	*	@param totalCost Total purchase cost
+	*  	@param typeUtilization Utilization of the material.
+	*/
 	public static void showData(Scanner sc,double totalHC,double totalCentro,double totalBarrio,int quantityMaterials,String[] materials,double[] minPrices,String[] minStores,double totalCost,String[] typeUtilization){
 		String type;	//Stores the type of material the user requests
 		
@@ -130,7 +151,7 @@ public class Budget{
 		
 		System.out.println("Tipo de utilizacion de productos que desea ver: ");
 		type = sc.nextLine().toLowerCase();
-		while (!Operations.searchEntry(type, UTILIZATIONS, 3)){
+		while (!Operations.searchInput(type, UTILIZATIONS, 3)){
 			System.out.println("NO ES UNA UTILIZACION VALIDA");
 			System.out.println("Los usos validos son: obra negra, obra blanca y pintura");
 			System.out.println("Tipo de utilizacion de productos que desea ver: ");
@@ -139,6 +160,15 @@ public class Budget{
 		showMaterials(materials, typeUtilization, quantityMaterials, type);
 	}
 	
+	/**
+	*	Shows the type of material requested. <br>
+	*	<b> pre: The parameters are initialized</b>
+	*	<b>	post:</b>
+	*	@param materials Name of the products.
+	*	@param typeUtilization Utilization of the material.
+	*	@param quantityMaterials quantity of input materials. quantityMaterials>0 and quantityMaterials!=null.
+	*	@param type Type of material requested. type!="" and type!=null
+	*/
 	public static void showMaterials (String[] materials, String[] typeUtilization, int quantityMaterials, String type){
 		int c = 0; //counter
 		for (int i = 0; i<quantityMaterials; i++){
