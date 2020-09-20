@@ -7,7 +7,7 @@ public class Operations{
 	
 	/**
 	*	searches for an input on a given array. <br>
-	*	<b>pre: The parameters are initialized.</b> 
+	*	<b>pre: </b>The parameters are initialized. <br>
 	*	<b>post: True if input is on array. False if input is not on array.</b>
 	*	@param search Entry to search. search!="" and search!=null.
 	*	@param array Place to look. array!=null.
@@ -25,7 +25,7 @@ public class Operations{
 	
 	/**
 	*	Calculates the total purchase valur <br>
-	*	<b>pre: Parameters are initialized</b>
+	*	<b>pre: </b>Parameters are initialized. <br>
 	*	<b>post: returns a positive Real number that represents the purchase value</b>
 	*	@param array Prices of the materials. array>0 and array!=null.
 	*	@param quantity Quantity of material requested. quantity>0 and quantity!=null.
@@ -41,8 +41,8 @@ public class Operations{
 	
 	/**
 	*	Calculates the total Workforce. <br>
-	*	<b>pre: Returns a positive integer that represents the total workforce</b>
-	*	<b>post: </b>
+	*	<b>pre: </b>Parameters are initialized. <br>
+	*	<b>post: </b>Returns a positive integer that represents the total workforce. <br>
 	*	@param typeUtilization Utilization of the material. typeUtilization!="" and typeUtilization!=null
 	*	@param quantityMaterials Quantity of input materials. quantityMaterials>0 and quantityMaterials!=null
 	*/
@@ -74,8 +74,8 @@ public class Operations{
 	
 	/**
 	*	Finds the lowest prices in each postition by comparing 3 arrays. <br>
-	*	<b>pre: parameters are initialized</b>
-	*	<b>post: Returns an array with the lowest Prices in each store</b>
+	*	<b>pre: </b>Parameters are initialized. <br>
+	*	<b>post: </b>Returns an array with the lowest Prices in each store. <br>
 	*	@param pricesHC Prices in HomeCenter. pricesHC>0 and pricesHC!=null.
 	*	@param pricesCentro Prices in ferreteria del Centro. pricesCentro>0 and pricesCentro!=null.
 	*	@param pricesBarrio Prices in ferreteria del barrio. pricesBarrio>0 and pricesBarrio!=null.
@@ -96,8 +96,8 @@ public class Operations{
 	
 	/**
 	*	Finds the stores that have the lowest prices. <br>
-	*	<b>pre:The parameters are initialized.</b>
-	*	<b>post: Returns the stores that have the lowest prices</b>
+	*	<b>pre: </b>Parameters are initialized. <br>
+	*	<b>post: </b>Returns the stores that have the lowest prices. <br>
 	*	@param pricesHC Prices in HomeCenter. pricesHC>0 and pricesHC!=null.
 	*	@param pricesCentro Prices in ferreteria del Centro. pricesCentro>0 and pricesCentro!=null.
 	*	@param pricesBarrio Prices in ferreteria del barrio. pricesBarrio>0 and pricesBarrio!=null
@@ -118,8 +118,8 @@ public class Operations{
 	
 	/**
 	*	Calculates the amount to pay for tansportation. <br>
-	*	<b>pre: Parameters are initialized</b>
-	*	<b>post: Returns a positive integer that represents the amount to pay for transportation</b>
+	*	<b>pre: </b>Parameters are initialized. <br>
+	*	<b>post: </b>Returns a positive integer that represents the amount to pay for transportation. <br>
 	*	@param totalCost The price to pay for the work. totalCost!=null.
 	*	@param location	The location of the property.
 	*/

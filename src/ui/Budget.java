@@ -8,7 +8,7 @@ public class Budget{
 	
 	/**
 	*	Request the inputs needed to solve the problem. <br>
-	*	<b>pre: sc is initialized</b>
+	*	<b>pre: </b> sc is initialized. <br>
 	*	<b>post: </b>
 	*	@param sc Scanner.
 	*/
@@ -117,7 +117,7 @@ public class Budget{
 	
 	/**
 	*	Shows the data. <br>
-	*	<b>pre: parameters are initialized</b>
+	*	<b>pre: </b>parameters are initialized.<br>
 	*	<b>post: </b>
 	*	@param sc Scanner.
 	*	@param totalHC Total purchase value HomeCenter
@@ -162,7 +162,7 @@ public class Budget{
 	
 	/**
 	*	Shows the type of material requested. <br>
-	*	<b> pre: The parameters are initialized</b>
+	*	<b> pre: </b>The parameters are initialized.<br>
 	*	<b>	post:</b>
 	*	@param materials Name of the products.
 	*	@param typeUtilization Utilization of the material.
