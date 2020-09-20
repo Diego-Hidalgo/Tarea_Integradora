@@ -1,8 +1,8 @@
 package model;
 public class Operations{
-	private static final int ROUGH_CONSTRUCTION = 1300000;
-	private static final int FINISHED_CONSTRUCTION = 2600000;
-	private static final int PAINTING = 980000;
+	private static final int ROUGH_CONSTRUCTION = 1300000; //workforce price for rough construction
+	private static final int FINISHED_CONSTRUCTION = 2600000; //workforce price for finished construction
+	private static final int PAINTING = 980000; //workforce price for painting
 	private static final String[] UTILIZATIONS = {"obra negra","obra blanca","pintura"};
 	
 	public static boolean searchEntry (String search, String[] array, int lenght){

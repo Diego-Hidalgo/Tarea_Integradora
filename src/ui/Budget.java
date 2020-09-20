@@ -7,8 +7,8 @@ public class Budget{
 	private static final String[] UTILIZATIONS = {"obra negra","obra blanca","pintura"};
 	
 	public static void requestData (Scanner sc){
-		int quantityMaterials;
-		String aux;
+		int quantityMaterials; //quantity of materials to enter
+		String aux; // it is used an auxiliar
 		
 		System.out.print("Cantidad de materiales a ingresar: ");
 		quantityMaterials = sc.nextInt();
@@ -18,17 +18,17 @@ public class Budget{
 			quantityMaterials = sc.nextInt();
 		}
 		
-		String[] materials = new String[quantityMaterials];
-		int[] quantity = new int[quantityMaterials];
-		String[] typeUtilization = new String[quantityMaterials];
-		double[] pricesHC = new double[quantityMaterials];
-		double[] pricesCentro = new double[quantityMaterials];
-		double[] pricesBarrio = new double[quantityMaterials];
-		double[] minPrices = new double[quantityMaterials];
-		String[] minStores = new String[quantityMaterials];
-		int workForce;
-		int transportation;
-		double totalCost;
+		String[] materials = new String[quantityMaterials];	//stores input materials
+		int[] quantity = new int[quantityMaterials];	//stores the quantity of each material
+		String[] typeUtilization = new String[quantityMaterials];	//stores the utilization of each material
+		double[] pricesHC = new double[quantityMaterials];	//Stores the price for HomeCenter
+		double[] pricesCentro = new double[quantityMaterials]; //Stores the price for Ferreteria del Centro
+		double[] pricesBarrio = new double[quantityMaterials];	//Stores the price for Ferreteria del Barrio
+		double[] minPrices = new double[quantityMaterials];		//Stores the lowest prices
+		String[] minStores = new String[quantityMaterials];		//Stores the Hardaware stores with the lowest prices
+		int workForce;	//Stores the total workforce
+		int transportation; //Stores the price of the transportation
+		double totalCost; //Stores the total Cost of the work
 		
 		sc.nextLine();
 		
@@ -39,7 +39,7 @@ public class Budget{
 			System.out.println("Ingrese la ubicacion del inmueble: ");
 			aux = sc.nextLine().toLowerCase();
 		}
-		String location = aux;
+		String location = aux;	//Stores the location of the property
 		
 		for (int i = 0; i<quantityMaterials; i++){
 			System.out.println("\n----------");
@@ -109,8 +109,8 @@ public class Budget{
 		showData(sc, totalHC, totalCentro, totalBarrio, quantityMaterials, materials, minPrices, minStores, totalCost, typeUtilization);
 	}
 	
-	public static void showData(Scanner sc,double totalHC, double totalCentro, double totalBarrio, int quantityMaterials, String[] materials, double[] minPrices, String[] minStores, double totalCost, String[] typeUtilization){
-		String type;
+	public static void showData(Scanner sc,double totalHC,double totalCentro,double totalBarrio,int quantityMaterials,String[] materials,double[] minPrices,String[] minStores,double totalCost,String[] typeUtilization){
+		String type;	//Stores the type of material the user requests
 		
 		System.out.println("El total de compra en HomeCenter es: "+totalHC);
 		System.out.println("El total de compra en Ferreteria del Centro es: "+totalCentro);
@@ -140,7 +140,7 @@ public class Budget{
 	}
 	
 	public static void showMaterials (String[] materials, String[] typeUtilization, int quantityMaterials, String type){
-		int c = 0;
+		int c = 0; //counter
 		for (int i = 0; i<quantityMaterials; i++){
 			if (typeUtilization[i].equals(type)){
 				System.out.println(materials[i]);
