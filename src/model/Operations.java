@@ -134,13 +134,14 @@ public class Operations{
 				break;
 			case "centro":
 				if (totalCost<80000)
-					transportation += 50000;
+					transportation = 50000;
 				break;
 			case "sur":
 				if (totalCost<80000)
 					transportation += 120000;
 				else if (totalCost<300000)
-					transportation += 55000;
+					transportation = 55000;
+				break;
 		}
 		return transportation;
 	}
