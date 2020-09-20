@@ -3,7 +3,6 @@ public class Operations{
 	private static final int ROUGH_CONSTRUCTION = 1300000;
 	private static final int FINISHED_CONSTRUCTION = 2600000;
 	private static final int PAINTING = 980000;
-	private static final String[] LOCATIONS = {"norte","centro","sur"};
 	private static final String[] UTILIZATIONS = {"obra negra","obra blanca","pintura"};
 	
 	public static boolean searchEntry (String search, String[] array, int lenght){
@@ -16,28 +15,33 @@ public class Operations{
 		return result;
 	}
 	
-	public static double calculateTotal (double[] array, String[] typeUtilization, int[] quantity, int quantityMaterials){
+	public static double calculateTotal (double[] array, int[] quantity, int quantityMaterials){
 		double result = 0; 
-		boolean stop = false;
 		for (int i = 0; i<quantityMaterials; i++){
-			result += array[i]*quantity[i];
+			result += (array[i]*quantity[i]);
 		}
+		return result;
+	}
+	
+	public static int calculateWorkForce(String[] typeUtilization, int quantityMaterials){
+		int result = 0; 
+		boolean stop = false;
 		for (int i = 0; i<quantityMaterials && !stop; i++){
-			if (typeUtilization[i] == UTILIZATIONS[0]){
+			if (typeUtilization[i].equals(UTILIZATIONS[0])){
 				result += ROUGH_CONSTRUCTION;
 				stop = true;
 			}	
 		}
 		stop = false;
 		for (int i = 0; i<quantityMaterials && !stop; i++){
-			if (typeUtilization[i] == UTILIZATIONS[1]){
+			if (typeUtilization[i].equals(UTILIZATIONS[1])){
 				result += FINISHED_CONSTRUCTION;
 				stop = true;
 			}	
 		}
 		stop = false;
 		for (int i = 0; i<quantityMaterials && !stop; i++){
-			if (typeUtilization[i] == UTILIZATIONS[2]){
+			if (typeUtilization[i].equals(UTILIZATIONS[2])){
 				result+= PAINTING;
 				stop = true;
 			}	
@@ -91,18 +95,5 @@ public class Operations{
 					transportation += 55000;
 		}
 		return transportation;
-	}
-	
-	public static void showMaterials (String[] materials, String[] typeUtilization, int quantityMaterials, String type){
-		int c = 0;
-		for (int i = 0; i<quantityMaterials; i++){
-			if (typeUtilization[i].equals(type)){
-				System.out.println(materials[i]);
-				c++;
-			}
-		}
-		if (c==0){
-			System.out.println("No existen entradas para la utilizacion solicitada");
-		}
 	}
 }

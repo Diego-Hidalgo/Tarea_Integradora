@@ -26,8 +26,9 @@ public class Budget{
 		double[] pricesBarrio = new double[quantityMaterials];
 		double[] minPrices = new double[quantityMaterials];
 		String[] minStores = new String[quantityMaterials];
+		int workForce;
+		int transportation;
 		double totalCost;
-		String type;
 		
 		sc.nextLine();
 		
@@ -89,19 +90,32 @@ public class Budget{
 			}
 			sc.nextLine();
 		}
+		workForce = Operations.calculateWorkForce(typeUtilization, quantityMaterials);
 		
-		System.out.println("El total de compra en HomeCenter es: ");
-		System.out.println(Operations.calculateTotal(pricesHC, typeUtilization, quantity, quantityMaterials));
-		
-		System.out.println("El total de compra en Ferreteria del Centro es: ");
-		System.out.println(Operations.calculateTotal(pricesCentro, typeUtilization, quantity, quantityMaterials));
-		
-		System.out.println("El total de compra en Ferreteria del Barrio es: ");
-		System.out.println(Operations.calculateTotal(pricesBarrio, typeUtilization, quantity, quantityMaterials));
-		System.out.println("");
+		double totalHC = Operations.calculateTotal(pricesHC, quantity, quantityMaterials);
+		totalHC += workForce;
+		double totalCentro = Operations.calculateTotal(pricesCentro, quantity, quantityMaterials);
+		totalCentro += workForce;
+		double totalBarrio = Operations.calculateTotal(pricesBarrio, quantity, quantityMaterials);
+		totalBarrio += workForce;
 		
 		minPrices = Operations.bestPrices(pricesHC, pricesCentro, pricesBarrio, quantityMaterials);
 		minStores = Operations.bestStores(pricesHC, pricesCentro, pricesBarrio, quantityMaterials);
+		
+		totalCost = Operations.calculateTotal(minPrices, quantity, quantityMaterials);
+		transportation = Operations.calculateTransportation(totalCost, location);
+		totalCost += workForce + transportation;
+		
+		showData(sc, totalHC, totalCentro, totalBarrio, quantityMaterials, materials, minPrices, minStores, totalCost, typeUtilization);
+	}
+	
+	public static void showData(Scanner sc,double totalHC, double totalCentro, double totalBarrio, int quantityMaterials, String[] materials, double[] minPrices, String[] minStores, double totalCost, String[] typeUtilization){
+		String type;
+		
+		System.out.println("El total de compra en HomeCenter es: "+totalHC);
+		System.out.println("El total de compra en Ferreteria del Centro es: "+totalCentro);
+		System.out.println("El total de compra en Ferreteria del Barrio es: "+totalBarrio);
+		System.out.println("");
 		
 		System.out.println("MEJORES PRECIOS Y TIENDAS");
 		for (int i = 0; i<quantityMaterials; i++){
@@ -110,9 +124,6 @@ public class Budget{
 			System.out.println("Se encuentra en la tienda: "+minStores[i]);
 			System.out.println("\n----------");
 		}
-		
-		totalCost = Operations.calculateTotal(minPrices, typeUtilization,quantity, quantityMaterials);
-		totalCost += Operations.calculateTransportation(totalCost, location);
 		
 		System.out.println("El precio total de compra en las mejores tiendas (incluido transporte y mano de obra) es: "+totalCost);
 		System.out.println("\n----------");
@@ -125,7 +136,20 @@ public class Budget{
 			System.out.println("Tipo de utilizacion de productos que desea ver: ");
 			type = sc.nextLine().toLowerCase();
 		}
-		Operations.showMaterials(materials, typeUtilization, quantityMaterials, type);
+		showMaterials(materials, typeUtilization, quantityMaterials, type);
+	}
+	
+	public static void showMaterials (String[] materials, String[] typeUtilization, int quantityMaterials, String type){
+		int c = 0;
+		for (int i = 0; i<quantityMaterials; i++){
+			if (typeUtilization[i].equals(type)){
+				System.out.println(materials[i]);
+				c++;
+			}
+		}
+		if (c==0){
+			System.out.println("No existen entradas para la utilizacion solicitada");
+		}
 	}
 	
 	public static void main(String[] args){
